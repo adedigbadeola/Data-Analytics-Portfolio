@@ -1,0 +1,47 @@
+/* 
+Select Statement
+*, Top, Distinct, Count, As, Max, Min, Avg
+*/
+
+
+-- To select all the rows and column in table EmployeeDemographics
+
+Select * From EmployeeDemographics;
+
+-- To select only the firstname and lastname column from table EmployeeDemographics
+
+Select FirstName, LastName From EmployeeDemographics;
+
+-- To select top 5 from table EmployeeDemographics
+
+SELECT * From EmployeeDemographics LIMIT 5;
+
+-- To select the unique values from column gender in table EmployeeDemographics
+
+SELECT Distinct (Gender)
+From EmployeeDemographics;
+
+-- To count the number of rows column lastname have, and the number of distinct gender.
+
+SELECT COUNT(LastName)
+From EmployeeDemographics;
+
+SELECT COUNT(Distinct (Gender))
+From EmployeeDemographics;
+
+-- To give a name to a column
+
+SELECT COUNT(Distinct (Gender)) AS DistinctGenderCount
+From EmployeeDemographics;
+
+-- To check the minimum, maximum and average salary.
+
+SELECT MIN(Salary)
+From EmployeeSalary;
+
+SELECT MAX(Salary)
+From EmployeeSalary;
+
+SELECT AVG(Salary)
+From EmployeeSalary;
+
