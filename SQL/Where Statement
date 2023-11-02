@@ -1,0 +1,80 @@
+/* 
+Where Statement
+=, <>, <, >, <=, >=, AND, OR, LIKE, NULL, NOT NULL, IN
+*/
+
+
+-- To select all from table EmployeeDemographics where firstname is jim
+
+SELECT * From EmployeeDemographics
+where FirstName = 'jim';
+
+-- To select all from table EmployeeDemographics where firstname is not jim
+
+SELECT * From EmployeeDemographics
+where FirstName <> 'jim';
+
+-- To select all from table EmployeeDemographics where Age is less than 30
+
+SELECT * From EmployeeDemographics
+where Age < 30;
+
+-- To select all from table EmployeeDemographics where Age is greater than 32
+
+SELECT * From EmployeeDemographics
+where Age > 32;
+
+-- To select all from table EmployeeDemographics where Age is less than or equal to 30
+
+SELECT * From EmployeeDemographics
+where Age <= 30;
+
+-- To select all from table EmployeeDemographics where Age is greater than or equal to 32
+
+SELECT * From EmployeeDemographics
+where Age >= 32;
+
+-- To select all from table EmployeeDemographics where Age is less than or equal to 30 and gender is male
+
+SELECT * From EmployeeDemographics
+where Age <= 30 AND Gender ='male';
+
+-- To select all from table EmployeeDemographics where Age is less than or equal to 30 or gender is female
+
+SELECT * From EmployeeDemographics
+where Age <= 30 OR Gender ='female';
+
+-- To select all from table EmployeeDemographics where lastname starts with letter 's'
+
+SELECT * From EmployeeDemographics
+where LastName LIKE 'S%';
+
+-- To select all from table EmployeeDemographics where lastname ends with letter 'T'
+
+SELECT * From EmployeeDemographics
+where LastName LIKE '%T';
+
+-- To select all from table EmployeeDemographics where lastname contains letter 'T'
+
+SELECT * From EmployeeDemographics
+where LastName LIKE '%T%';
+
+-- To select all from table EmployeeDemographics where lastname contains letter 'T' and starts with 's'
+
+SELECT * From EmployeeDemographics
+where LastName LIKE 'S%T%';
+
+-- To select all from table EmployeeDemographics where lastname contains a null value
+
+SELECT * From EmployeeDemographics
+where LastName is NULL;
+
+-- To select all from table EmployeeDemographics where lastname does not contain a null value
+
+SELECT * From EmployeeDemographics
+where LastName is NOT NULL;
+
+-- To select all from table EmployeeDemographics where firstname is jim and michael
+
+SELECT * From EmployeeDemographics
+where FirstName IN ('jim', 'Michael');
