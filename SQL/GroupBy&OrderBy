@@ -1,0 +1,24 @@
+/*
+Group by, Order by
+*/
+
+
+-- To group certain category of values together, in this case gender(male grouped seperately and female grouped seperately)
+
+SELECT *
+FROM EmployeeDemographics;
+
+
+SELECT Gender, COUNT(Gender)
+FROM EmployeeDemographics
+GROUP BY Gender;
+
+-- To order or arrange age from smallest to largest 
+SELECT *
+FROM EmployeeDemographics
+ORDER BY Age;
+
+-- To order using column number
+SELECT *
+FROM EmployeeDemographics
+ORDER BY 4;
