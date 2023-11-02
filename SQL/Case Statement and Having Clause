@@ -1,0 +1,39 @@
+/*
+CASE STATEMENT and Having Clause
+*/
+
+-- Case Statement
+
+SELECT FirstName, LastName, JobTitle, Salary,
+CASE
+    WHEN JobTitle = 'Salesman' Then salary + (salary * .10)
+    WHEN JobTitle = 'Accountant' Then salary + (salary * .05)
+    WHEN JobTitle = 'HR' Then salary + (salary * .02)
+    ELSE salary + (salary * .01)
+END AS RaisedSalary
+FROM EmployeeDemographics
+Join EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+
+SELECT FirstName, LastName, JobTitle, Salary,
+CASE
+    WHEN JobTitle = 'Salesman' Then salary * .10
+    WHEN JobTitle = 'Accountant' Then salary * .05
+    WHEN JobTitle = 'HR' Then salary * .02
+    ELSE salary * .01
+END AS AmountRaise
+FROM EmployeeDemographics
+Join EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+
+-- Having clause
+
+SELECT JobTitle, AVG(Salary) AS AverageSalary
+FROM EmployeeDemographics
+Join EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle
+Having AVG(Salary) > 45000
+ORDER BY AverageSalary;
