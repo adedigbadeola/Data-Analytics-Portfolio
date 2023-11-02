@@ -1,0 +1,62 @@
+/*
+Inner Joins, Full/left/right outer Joins, Union, Union All
+*/
+
+
+-- Inner Join
+
+SELECT *
+FROM EmployeeDemographics
+INNER JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- FULL Outer Join( Not valid in workbench, to achieve that you need to combine both left and right join using union all)
+
+SELECT *
+FROM EmployeeDemographics
+LEFT JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+UNION ALL
+
+SELECT *
+FROM EmployeeDemographics
+RIGHT JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- UNION(Make sure to use tables with similar content)
+
+SELECT *
+FROM EmployeeDemographics
+LEFT JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+UNION
+
+SELECT *
+FROM EmployeeDemographics
+RIGHT JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- Right Join
+
+SELECT *
+FROM EmployeeDemographics
+RIGHT OUTER JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- Left Join
+
+SELECT *
+FROM EmployeeDemographics
+LEFT OUTER JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- Select average salary of salesman
+
+SELECT Jobtitle, AVG(Salary) as AverageSalary
+FROM EmployeeDemographics
+INNER JOIN EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE Jobtitle = 'salesman'
+Group by Jobtitle;
