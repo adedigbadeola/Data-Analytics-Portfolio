@@ -1,0 +1,53 @@
+/*
+Updating/Deleting data, Aliasing, Partition by, CTE(COMMON TABLE EXPRESSION)
+*/
+
+-- Updating Data
+
+SELECT *
+FROM EmployeeDemographics;
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Employee.EmployeeDemographics
+SET EmployeeID = 1012
+WHERE FirstName ='Holly' And LastName = 'Flax';
+
+UPDATE Employee.EmployeeDemographics
+SET Age = 31, Gender ='Female'
+WHERE FirstName ='Holly' And LastName = 'Flax';
+
+-- Deleting Data
+
+DELETE FROM Employee.EmployeeDemographics
+WHERE EmployeeID =1005;
+
+-- Aliasing
+
+SELECT FirstName FName
+FROM EmployeeDemographics;
+
+-- Alias Column Name
+SELECT CONCAT(FirstName ,' ', LastName) As Fullname
+FROM employee.EmployeeDemographics;
+
+-- Alias table name
+SELECT Demo.EmployeeID, Sal.Salary
+FROM employee.EmployeeDemographics AS Demo
+JOIN employee.EmployeeSalary As Sal
+ON Demo.EmployeeID = Sal.EmployeeID;
+
+-- Partition By
+SELECT FirstName, LastName, Gender, Salary,
+COUNT(Gender) Over (Partition By Gender) As TotalGender
+FROM employee.EmployeeDemographics AS Demo
+JOIN employee.EmployeeSalary As Sal
+ON Demo.EmployeeID = Sal.EmployeeID;
+
+-- CTE 
+WITH CTE_Employee as(
+SELECT FirstName, LastName, Gender, Salary,
+COUNT(Gender) Over (Partition By Gender) As TotalGender
+FROM employee.EmployeeDemographics AS Demo
+JOIN employee.EmployeeSalary As Sal
+ON Demo.EmployeeID = Sal.EmployeeID)
+SELECT * FROM CTE_Employee;
