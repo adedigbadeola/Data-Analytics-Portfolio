@@ -1,0 +1,44 @@
+/* 
+TEMP Tables
+*/
+
+-- Create a temporary table
+CREATE TEMPORARY TABLE `temp_employee`(
+EmployeeID INT,
+JobTitle VARCHAR(100),
+Salary INT
+);
+
+select * from `temp_employee`;
+
+-- manually insert into temporary table
+INSERT INTO `temp_employee` VALUES (
+'1001', 'HR', '45000'
+);
+
+-- inserting values from an already existing table
+INSERT INTO `temp_employee` 
+SELECT *
+FROM EmployeeSalary;
+
+Drop TABLE IF EXISTS `temp_employee2`;
+
+-- Create a temporary table
+
+CREATE TEMPORARY TABLE `temp_employee2`(
+JobTitle  VARCHAR(50),
+EmployeesPerJob INT,
+AvgAge INT,
+AvgSalary INT
+);
+
+-- inserting values from an already existing table
+
+INSERT INTO `temp_employee2`
+SELECT Jobtitle, COUNT(Jobtitle), AVG(Age), AVG(Salary)
+FROM EmployeeDemographics emp
+JOIN EmployeeSalary sal
+ON emp.EmployeeID = sal.EmployeeID
+Group by Jobtitle;
+
+select * from `temp_employee2`;
